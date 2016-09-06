@@ -1,54 +1,46 @@
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(ac-ignores (quote ("//")))
- '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/auto-save/" t))))
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backup"))))
- '(c-basic-offset 4)
- '(c-offsets-alist (quote ((substatement-open . 0))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(backup-by-copying t)
+ '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
  '(column-number-mode t)
- '(cscope-do-not-update-database t)
- '(ecb-options-version "2.40")
- '(ecb-tip-of-the-day nil)
- '(egg-log-HEAD-max-len 100)
- '(follow-auto t)
- '(fringe-mode (quote (4 . 0)) nil (fringe))
- '(gdb-many-windows t)
- '(global-hl-line-mode t)
- '(ido-completion-buffer-all-completions t)
- '(ido-enable-tramp-completion nil)
- '(ido-everywhere t)
+ '(cscope-option-do-not-update-database t)
+ '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-safe-themes
+   (quote
+    ("81e2fea7743efa9696241ff5933579a8007f9d9df85f651c9efde5e6f3dd6bbc" "05e436673dcaca79362177872c3a01f3d5894ef43caf857676145eae23303501" "64b28ef2e7c5aefbb28a828accc0160b9e6e23d7d919441d8f602654bbd9bc10" default)))
+ '(electric-pair-mode t)
+ '(flymake-check-file-limit 8192000 t)
+ '(flymake-no-changes-timeout 500000000)
+ '(global-highlight-parentheses-mode t)
+ '(global-whitespace-mode t)
  '(ido-mode (quote both) nil (ido))
- '(indent-tabs-mode nil)
- '(indicate-buffer-boundaries (quote left))
- '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
- '(java-mode-hook (quote (cscope:hook)) t)
- '(mouse-avoidance-mode (quote animate) nil (avoid))
- '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("ELPA" . "http://tromey.com/elpa/") ("Marmalade" . "http://marmalade-repo.org/"))))
- '(recentf-max-saved-items 50)
+ '(kept-new-versions 6)
+ '(recentf-auto-cleanup (quote never))
  '(recentf-mode t)
- '(ropemacs-codeassist-maxfixes 10)
- '(ropemacs-guess-project t)
- '(ropemacs-max-doc-buffer-height 60)
+ '(ropemacs-enable-autoimport t)
+ '(ropemacs-enable-shortcuts nil)
  '(server-mode t)
  '(show-paren-mode t)
- '(show-trailing-whitespace t)
- '(size-indication-mode t)
- '(tab-width 4)
- '(tmm-mid-prompt "=>")
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
- '(visible-bell t)
- '(w3m-default-display-inline-images t)
- '(windmove-wrap-around t)
- '(x-select-enable-clipboard t))
+ '(vc-display-status nil)
+ '(vc-handled-backends nil)
+ '(version-control (quote never))
+ '(whitespace-action (quote (auto-cleanup)))
+ '(whitespace-display-mappings nil)
+ '(whitespace-line-column 120)
+ '(whitespace-style
+   (quote
+    (face tabs spaces trailing lines space-before-tab indentation empty space-after-tab space-mark tab-mark newline-mark))))
+
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(ac-selection-face ((t (:background "darkblue" :foreground "white"))))
  '(completions-first-difference ((t (:inherit bold :foreground "green"))))
  '(custom-button ((((type x w32 ns) (class color)) (:background "lightgrey" :foreground "black" :box (:line-width 1 :style released-button)))))
@@ -61,9 +53,11 @@
  '(egg-text-2 ((t (:inherit egg-text-base))))
  '(egg-text-base ((t (:inherit variable-pitch :foreground "dark cyan"))))
  '(egg-text-help ((t (:inherit egg-text-base))))
+ '(font-lock-comment-face ((t (:foreground "brightmagenta"))))
  '(font-lock-function-name-face ((((class color) (min-colors 88) (background dark)) (:foreground "LightSkyBlue" :weight bold))))
- '(font-lock-keyword-face ((((class color) (min-colors 88) (background dark)) (:foreground "Cyan1" :weight bold))))
+ '(font-lock-keyword-face ((t (:foreground "color-34" :weight bold))))
  '(font-lock-preprocessor-face ((t (:inherit font-lock-builtin-face :weight bold))))
+ '(font-lock-string-face ((t (:foreground "green"))))
  '(font-lock-type-face ((((class color) (min-colors 88) (background dark)) (:foreground "PaleGreen" :weight bold))))
  '(fringe ((t (:background "grey35" :foreground "cyan"))))
  '(hl-line ((t (:inherit highlight :background "gray10"))))
@@ -73,109 +67,120 @@
  '(mode-line ((t (:background "dark red" :foreground "white" :box (:line-width -1 :style released-button)))))
  '(mode-line-highlight ((t (:inverse-video t))))
  '(mode-line-inactive ((t (:inherit mode-line :background "darkblue"))))
- '(trailing-whitespace ((t (:background "gray50")))))
+ '(py-decorators-face ((t (:foreground "brightcyan"))))
+ '(py-def-class-face ((t (:inherit font-lock-keyword-face :foreground "color-40"))))
+ '(py-import-from-face ((t (:foreground "brightcyan"))))
+ '(py-number-face ((t (:inherit default :foreground "magenta" :weight bold))))
+ '(py-pseudo-keyword-face ((t (:inherit font-lock-keyword-face :foreground "cyan"))))
+ '(py-variable-name-face ((t (:inherit default :foreground "color-81"))))
+ '(region ((t (:background "blue"))))
+ '(trailing-whitespace ((t (:background "gray50"))))
+ '(whitespace-empty ((t (:background "color-231" :foreground "firebrick"))))
+ '(whitespace-hspace ((t nil)))
+ '(whitespace-indentation ((t nil)))
+ '(whitespace-newline ((t nil)))
+ '(whitespace-space ((t nil)))
+ '(whitespace-space-after-tab ((t (:background "yellow" :foreground "firebrick"))))
+ '(whitespace-tab ((t (:background "color-234" :foreground "darkgray")))))
 
-(push "~/.emacs.d" load-path)
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(require 'xcscope)
-(require 'egg)
+(unless (require 'el-get nil 'noerror)
+  (require 'package)
+  (add-to-list 'package-archives
+	       '("melpa" . "http://melpa.org/packages/"))
+  (package-refresh-contents)
+  (package-initialize)
+  (package-install 'el-get)
+  (require 'el-get))
 
-
-;; (add-to-list 'load-path "~/.emacs.d/auto-complete")
-;; (require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
-;; (ac-config-default)
-
-
-(load-file "~/.emacs.d/nxhtml/autostart.el")
-(add-hook 'nxhtml-mode-hook
-          '(lambda ()
-             (make-variable-buffer-local 'yas/trigger-key)
-             (setq yas/trigger-key [tab])))
-
-(setq mumamo-background-colors nil)
-(add-to-list 'auto-mode-alist '("\\.html$" . django-html-mumamo-mode))
-
-(require 'yasnippet)
-(yas/initialize)
-(yas/load-directory "/usr/share/emacs/etc/yasnippet/snippets")
-(yas/define-snippets 'django-html-mumamo-mode nil 'html-mode)
-(add-hook 'change-major-mode-hook 'yas/exit-all-snippets)
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 
 
+(global-set-key [?\C-x w] 'windmove-left)
+(el-get-init 'egg)
 
-(defadvice tmm-add-one-shortcut (after color-tmm ())
-  "Make tmm prompt with colors"
-  (put-text-property 0 1 'face 'completions-first-difference
-		     (car ad-return-value))
-  (put-text-property 1 (1+ (length tmm-mid-prompt)) 'face 'shadow
-		     (car ad-return-value)))
+(el-get-init 'auto-pair+)
+(require 'auto-pair+)
+(el-get-init 'python-mode)
 (require 'python-mode)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-(add-to-list 'auto-mode-alist '("\\.bream\\'" . java-mode))
-(add-to-list 'auto-mode-alist '("\\.inl\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.inc\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
-(require 'pymacs)
+(el-get-init 'ropemacs)
+(el-get-init 'pymacs)
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
 
+;(el-get-init 'django-mode)
+(el-get-init 'highlight-parentheses)
 (pymacs-load "ropemacs" "rope-")
 
-(add-hook 'comint-output-filter-functions
-	  'shell-strip-ctrl-m nil t)
-(add-hook 'comint-output-filter-functions
-	  'comint-watch-for-password-prompt nil t)
+;(el-get-init 'python-mode)
 
-(add-hook 'java-mode-hook (function cscope:hook))
-(add-hook 'pike-mode-hook (function cscope:hook))
+(when (load "flymake" t)
+  (defun flymake-pylint-init ()
+    (list "epylint" (list (buffer-file-name))))
+  (defun flymake-phpcs-init ()
+    (list "phpcs" (list "-w" (buffer-file-name))))
+  (add-to-list 'flymake-allowed-file-name-masks
+	       '("\\.py\\'" flymake-pylint-init))
+  (add-to-list 'flymake-allowed-file-name-masks
+	       '("\\.php\\'" flymake-phpcs-init)))
 
-;(require 'w3m-load)
-;(require 'mime-w3m)
-;(require 'mew)
+;; Set as a minor mode for Python
+(add-hook 'python-mode-hook '(lambda () (flymake-mode)))
+(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cn" 'flymake-goto-next-error)))
+(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cp" 'flymake-goto-prev-error)))
+(defun show-fly-err-at-point ()
+  "If the cursor is sitting on a flymake error, display the message in the minibuffer"
+  (require 'cl)
+  (interactive)
+  (let ((line-no (line-number-at-pos)))
+    (dolist (elem flymake-err-info)
+      (if (eq (car elem) line-no)
+      (let ((err (car (second elem))))
+	(message "%s" (flymake-ler-text err)))))))
 
+(add-hook 'post-command-hook 'show-fly-err-at-point)
+(el-get-init 'flymake)
 
-(require 'pike)
-(setq auto-mode-alist
-      (append '(("\\.pike$" . pike-mode)) auto-mode-alist))
+(el-get-init 'flymake-pycheckers)
+;; (el-get-init 'elpy)
+;; (require 'elpy)
 
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
-(ac-config-default)
+(defvar mPackages
+  '(better-defaults
+    elpy
+    flycheck
+    )
+  )
 
-(require 'auto-complete-clang)
-(setq clang-completion-suppress-error 't)
-(defun clang-c-mode-common-hook()
-  (make-variable-buffer-local 'ac-auto-start)
-  (make-variable-buffer-local 'ac-expand-on-auto-complete)
-  (make-variable-buffer-local 'ac-quick-help-delay)
-  (setq ac-auto-start nil)
-  (setq ac-expand-on-auto-complete nil)
-  (setq ac-quick-help-delay 0.3)
-  (define-key c-mode-base-map (kbd "s-/") 'ac-complete-clang))
-(add-hook 'c-mode-common-hook 'clang-c-mode-common-hook)
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
+(el-get-init 'flycheck)
+(require 'flycheck)
+(el-get-init 'markdown-mode)
+(el-get-init 'magit)
+(require 'magit)
+(el-get-init 'php-mode-improved)
+(require 'php-mode)
 
-(setq sdcv-dictionary-complete-list     ;星际译王的词典, 完全, 详细
-      '("牛津英汉双解美化版"
-        "英汉汉英专业词典"))
+(el-get-init 'flymake-easy)
+(el-get-init 'flymake-phpcs)
+(require 'flymake-phpcs)
 
+(el-get-init 'xcscope)
+(require 'xcscope)
 
-(require 'sdcv)
+(add-hook 'c-mode-hook (function cscope-minor-mode))
+(add-hook 'php-mode-hook (function cscope-minor-mode))
 
-(global-set-key (kbd "<f12>") 'recentf-open-files)
-;;(global-set-key (kbd "<f11>") (lambda () (interactive)(w32-send-sys-command 61488)))
-(global-set-key (kbd "<f7>") 'compile)
-(global-set-key [C-tab] 'other-window)
-(global-set-key [C-S-tab] (lambda () (interactive) (other-window -1)))
-(global-set-key (kbd "s-c d") 'sdcv-search-pointer)
-(define-key ropemacs-local-keymap (kbd "M-/") nil)
-(define-key ropemacs-local-keymap (kbd "s-/") 'rope-code-assist)
-;(global-set-key (kbd "s-/") 'rope-code-assist)
-(global-set-key (kbd "s-b") 'windmove-left)
-(global-set-key (kbd "s-f") 'windmove-right)
-(global-set-key (kbd "s-n") 'windmove-down)
-(global-set-key (kbd "s-p") 'windmove-up)
-(global-set-key (kbd "s-o") 'other-window)
-(global-set-key (kbd "s-O") (lambda () (interactive)(other-window -1)))
-
+(el-get-init 'jedi)
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+(el-get-init 'pos-tip)
+(require 'pos-tip)
